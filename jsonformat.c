@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013  Krzysztof Kliś <krzysztof.klis@gmail.com>
+ * Copyright (C) 2013, Krzysztof Kliś <krzysztof.klis@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -31,10 +31,8 @@
 
 typedef enum {TRUE = 1, FALSE = 0} bool;
 
-bool escape = FALSE;
-bool intern = FALSE;
-bool newline = FALSE;
 int level = 0;
+bool escape = FALSE, intern = FALSE, newline = FALSE;
 
 void parse(int c);
 void format(int c);
@@ -74,7 +72,7 @@ void parse(int c) {
 
 void format(int c) {
     if (c == '[' || c == '{') {
-	print(c);
+        print(c);
         level++;
         newline = TRUE;
     } else if (c == ']' || c == '}') {
