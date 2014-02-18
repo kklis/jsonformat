@@ -47,6 +47,7 @@ int main() {
             parse(c);
         }
     }
+    printf("\n");
     return 0;
 }
 
