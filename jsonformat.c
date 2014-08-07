@@ -28,10 +28,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef enum {TRUE = 1, FALSE = 0} bool;
 
 int level = 0;
+int tab = 2;
 bool escape = FALSE, intern = FALSE, newline = FALSE;
 
 void parse(int c);
@@ -39,8 +41,13 @@ void format(int c);
 void print(int c);
 void indent(void);
 
-int main() {
+int main(int argc, char *argv[]) {
     int c;
+
+    if (argc > 2 && strcmp(argv[1], "-n") == 0) {
+        c = atoi(argv[2]);
+        if (c > 0) tab = c;
+    }
 
     while ((c = fgetc(stdin)) != EOF) {
         if (c != '\r' && c != '\n') {
@@ -102,10 +109,10 @@ void print(int c) {
 }
 
 void indent(void) {
-    int i;
+    int i, n;
 
     printf("\n");
     for (i = 0; i < level; i++) {
-        printf("  ");
+        for (n = 0; n < tab; n++) printf(" ");
     }
 }

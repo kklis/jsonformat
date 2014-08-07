@@ -8,7 +8,13 @@ It reads data from the standard input line by line and sends it formatted to the
 
 On Linux compile the software using "make". On Windows use "make" from Cygwin (http://cygwin.com).
 
-3. USAGE EXAMPLES
+3. COMMAND LINE OPTIONS
+
+You can change default indentation from 2 spaces to any other number with "-n". Example:
+
+jsonformat -n 4
+
+4. USAGE EXAMPLES
 
 cat test.json | jsonformat
 
